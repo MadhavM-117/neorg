@@ -32,10 +32,10 @@ module.public = {
     ---@param half boolean #If true returns a position that could be considered the center of the window
     get_window_size = function(half)
         return half
-                and {
-                    math.floor(vim.fn.winwidth(0) / 2),
-                    math.floor(vim.fn.winheight(0) / 2),
-                }
+            and {
+                math.floor(vim.fn.winwidth(0) / 2),
+                math.floor(vim.fn.winheight(0) / 2),
+            }
             or { vim.fn.winwidth(0), vim.fn.winheight(0) }
     end,
 
@@ -162,6 +162,9 @@ module.public = {
             config = { buf_config, "table" },
             win_config = { win_config, "table" },
         })
+
+        -- debug
+        vim.notify(name)
 
         local buf = vim.api.nvim_create_buf(false, true)
 
@@ -348,8 +351,8 @@ module.public = {
         if opts.del_on_autocommands and #opts.del_on_autocommands ~= 0 then
             vim.cmd(
                 "autocmd "
-                    .. table.concat(opts.del_on_autocommands, ",")
-                    .. (" <buffer=%s> silent! bd! %s"):format(buf, buf)
+                .. table.concat(opts.del_on_autocommands, ",")
+                .. (" <buffer=%s> silent! bd! %s"):format(buf, buf)
             )
         end
 
