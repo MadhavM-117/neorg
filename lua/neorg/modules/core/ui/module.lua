@@ -176,7 +176,7 @@ module.public = {
             filetype = "norg",
         }
 
-        vim.print(buf)
+        vim.notify(tostring(buf))
 
         vim.api.nvim_buf_set_name(buf, "neorg://" .. name)
 
