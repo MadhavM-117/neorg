@@ -176,6 +176,8 @@ module.public = {
             filetype = "norg",
         }
 
+        vim.print(buf)
+
         vim.api.nvim_buf_set_name(buf, "neorg://" .. name)
 
         local win_options = {
